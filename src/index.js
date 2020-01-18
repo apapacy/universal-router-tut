@@ -3,8 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import history from './history';
+import router from './router';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+const render = async (location) => {
+    const element = await router.resolve(location);
+    ReactDOM.render(
+            element,
+        document.getElementById('root'),
+    );
+};
+
+render(history.location);
+history.listen(render);
+
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
