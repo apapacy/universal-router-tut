@@ -5,7 +5,7 @@ import history from './history';
 const createOnClickAnchor = (callback) => {
     return (e) => {
         e.preventDefault();
-        history.push(e.currentTarget.getAttribute('href'));
+        history.navigate(e.currentTarget.getAttribute('href'));
         callback(e);
     };
 };
