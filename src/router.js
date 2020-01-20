@@ -3,6 +3,11 @@ import UniversalRouter from 'universal-router';
 import App from './App';
 import Link from './Link';
 
+function click(e) {
+  console.log(e)
+  console.log(this)
+}
+
 const routes =
     {
         path: '/',
@@ -19,7 +24,7 @@ const routes =
                 path: '',
                 async action() {
                     return (
-                        <div>Root route go to <Link href='/test'>Test</Link></div>
+                        <div>Root route go to <Link href='/test' onClick={e => console.log(e)}>Test</Link></div>
                     );
                 },
             },
@@ -38,7 +43,7 @@ const routes =
                         path: '',
                         async action() {
                             return (
-                                <div>Test route return to <Link href='/'>Root</Link></div>
+                                <div>Test route return to <Link href='/' onClick={e => console.log(e)}>Root</Link></div>
                             );
                         },
                     },
